@@ -1,6 +1,8 @@
 [tools]
 node = "latest"
 "npm:skills" = "latest"
+pipx = "latest"
+"pipx:cruft" = "latest"
 worktrunk = "latest"
 
 [tasks.init]
@@ -15,3 +17,11 @@ run = [
 [tasks.worktree-init]
 hide = true
 run = "wt step copy-ignored --require-include"
+
+[tasks."template:update"]
+description = "Update project with the latest changes from the template"
+run = "cruft update"
+
+[tasks."template:restore"]
+description = "Restore template-managed files"
+run = "cruft diff | git apply"
