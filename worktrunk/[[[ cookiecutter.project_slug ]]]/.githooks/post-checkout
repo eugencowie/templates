@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#
+# Bootstraps the development environment for a newly created worktree by
+# running `mise worktree-init` once, right after the worktree is checked
+# out. Ordinary branch switches in the main working tree are skipped.
+#
+[[ "${3:-0}" == "1" && -f .git ]] && exec mise worktree-init || exit 0
