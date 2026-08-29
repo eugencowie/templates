@@ -1,0 +1,17 @@
+[tools]
+node = "latest"
+"npm:skills" = "latest"
+worktrunk = "latest"
+
+[tasks.init]
+description = "Initialise development environment"
+run = [
+  "git config core.hooksPath .githooks",
+  "skills experimental_install",
+  "cp -r .agents/. .claude",
+  "echo @AGENTS.md > CLAUDE.md"
+]
+
+[tasks.worktree-init]
+hide = true
+run = "wt step copy-ignored --require-include"
