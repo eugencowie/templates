@@ -4,7 +4,7 @@ A [mise](https://mise.jdx.dev)-managed, agent-ready starting point for a new pro
 
 ## Getting started
 
-Create a new project from the template:
+Create a new project from the template using [cruft](https://cruft.github.io/cruft/) (without installing: `pipx run cruft` or `uvx cruft` or `nix run nixpkgs#cruft --`):
 
 ```bash
 cruft create https://github.com/eugencowie/templates --directory <template>
@@ -15,8 +15,6 @@ Update the project to the latest template version, from inside the project:
 ```bash
 cruft update
 ```
-
-If you don't have [cruft](https://cruft.github.io/cruft/) installed, you can run it with `nix run nixpkgs#cruft --`, `pipx run cruft` or `uvx cruft`.
 
 ## Opinionated configuration
 
@@ -34,26 +32,19 @@ Setup is already done, so don't re-run `/setup-matt-pocock-skills` unless you sp
 
 ### `bare`
 
-For when the skills are installed globally (e.g. in `~/.claude/skills` or `~/.codex/skills`) rather than managed by the project. This keeps the project much simpler: there is nothing to install and nothing to copy into new worktrees. The template ships `AGENTS.md`, a `CLAUDE.md` that points at it, and `docs/agents/`.
+For when skills are installed globally (e.g. in `~/.claude/skills` or `~/.codex/skills`) rather than managed by the project.
 
-There is no setup step. `mise.toml` starts empty, so add your toolchain and tasks and go; mise will ask you to trust the config when it first needs to.
+This keeps the project much simpler: there is nothing to install and nothing to copy into new worktrees. There is no setup step. `mise.toml` starts empty, so add your toolchain and tasks and go.
 
 ### `worktrunk`
 
-Works with Claude Code and Codex with first-class worktree support.
+Project-managed skills for Claude Code and Codex, with first-class worktree support.
 
-Initialise the environment:
-
-```bash
-mise trust
-mise run init
-```
-
-`init` installs the required tools ([skills](https://github.com/vercel-labs/skills) via Node.js), installs the configured skills into `.agents/`, copies them into `.claude/`, writes `CLAUDE.md`, and sets up Git hooks for worktree creation.
+Initialise the environment with `mise run init`. This installs the required tools ([skills](https://github.com/vercel-labs/skills) via Node.js), installs the configured skills into `.agents/`, copies them into `.claude/`, writes `CLAUDE.md`, and sets up Git hooks for worktree creation.
 
 The `post-checkout` hook bootstraps newly created worktrees automatically using [worktrunk](https://github.com/max-sixty/worktrunk) to copy `init`'s output from the main worktree instead of downloading and installing everything again. Add files to be copied to new worktrees to `.worktreeinclude`.
 
-No skills are committed by default, if you choose to commit them then you must adhere to the terms of the license they are distributed under. See https://github.com/mattpocock/skills/blob/main/LICENSE for details.
+Skills are restored from `skills-lock.json`, not committed. If you choose to commit them then you must adhere to the terms of the licence they are distributed under. See https://github.com/mattpocock/skills/blob/main/LICENSE for details.
 
 ## Licence
 
