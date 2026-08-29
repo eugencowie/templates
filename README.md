@@ -20,7 +20,7 @@ cruft update
 
 `/setup-matt-pocock-skills` normally asks you a series of questions and writes `docs/agents/` from its own defaults; here those answers are already baked in.
 
-Tickets are tracked as local Markdown files in `docs/planning/`. Domain docs sit in `docs/context.md` and `docs/architecture/`. The template assumes a single domain context.
+Tickets are tracked as local Markdown files in `docs/planning/`. Domain docs sit in `docs/context.md` and `docs/architecture/`. The templates assume a single domain context.
 
 There is one behavioural change: `/wayfinder` never auto-runs research. Instead, it creates the ticket and leaves it unclaimed, so you can launch it yourself using the agent and model of your choice.
 
@@ -28,7 +28,7 @@ Setup is already done, so don't re-run `/setup-matt-pocock-skills` unless you sp
 
 [mise](https://mise.jdx.dev/getting-started.html) installs everything the project needs. Add your language toolchain to `[tools]` in `mise.toml`, add your build, test and lint commands to `[tasks]`.
 
-## Templates
+## Available templates
 
 ### `bare`
 
