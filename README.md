@@ -7,14 +7,16 @@ A [mise](https://mise.jdx.dev)-managed, agent-ready starting point for a new pro
 Create a new project from the template:
 
 ```bash
-nix run nixpkgs#cruft -- create https://github.com/eugencowie/templates --directory <template>
+cruft create https://github.com/eugencowie/templates --directory <template>
 ```
 
-Update the project to the latest template version:
+Update the project to the latest template version, from inside the project:
 
 ```bash
-nix run nixpkgs#cruft -- update
+cruft update
 ```
+
+If you don't have [cruft](https://cruft.github.io/cruft/) installed, you can run it with `nix run nixpkgs#cruft --`, `pipx run cruft` or `uvx cruft`.
 
 ## Opinionated configuration
 
@@ -31,6 +33,10 @@ Setup is already done, so don't re-run `/setup-matt-pocock-skills` unless you sp
 ## Templates
 
 ### `bare`
+
+For when the skills are installed globally (e.g. in `~/.claude/skills` or `~/.codex/skills`) rather than managed by the project. This keeps the project much simpler: there is nothing to install and nothing to copy into new worktrees. The template ships `AGENTS.md`, a `CLAUDE.md` that points at it, and `docs/agents/`.
+
+There is no setup step. `mise.toml` starts empty, so add your toolchain and tasks and go; mise will ask you to trust the config when it first needs to.
 
 ### `worktrunk`
 
