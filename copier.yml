@@ -1,0 +1,7 @@
+template:
+  type: str
+  choices:
+    - bare
+
+_subdirectory: "{{ template }}"
+_answers_file: .copier.yml
