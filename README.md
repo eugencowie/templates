@@ -7,7 +7,7 @@ A [mise](https://mise.jdx.dev)-managed, agent-ready starting point for a new pro
 Create a new project from the template using [cruft](https://cruft.github.io/cruft/) (without installing: `pipx run cruft` or `uvx cruft` or `nix run nixpkgs#cruft --`):
 
 ```bash
-cruft create https://github.com/eugencowie/templates --directory <template>
+cruft create https://github.com/eugencowie/templates
 ```
 
 ## Opinionated configuration
@@ -44,7 +44,7 @@ For when skills are installed globally (e.g. in `~/.claude/skills` or `~/.codex/
 
 This keeps the project much simpler: there is nothing to initialise and nothing to copy into new worktrees. `mise.toml` ships only cruft and template maintenance tasks, so add your toolchain and tasks and go.
 
-### `worktrunk`
+### `bare-with-skills`
 
 Project-managed skills for Claude Code and Codex, with first-class worktree support.
 

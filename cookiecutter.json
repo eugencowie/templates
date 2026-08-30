@@ -1,0 +1,12 @@
+{
+  "templates": {
+    "bare": {
+      "path": "./bare",
+      "title": "Bare"
+    },
+    "bare-with-skills": {
+      "path": "./bare-with-skills",
+      "title": "Bare (with project-managed skills)"
+    }
+  }
+}
