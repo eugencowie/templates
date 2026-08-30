@@ -10,12 +10,6 @@ Create a new project from the template using [cruft](https://cruft.github.io/cru
 cruft create https://github.com/eugencowie/templates --directory <template>
 ```
 
-Update the project to the latest template version, from inside the project:
-
-```bash
-cruft update
-```
-
 ## Opinionated configuration
 
 `/setup-matt-pocock-skills` normally asks you a series of questions and writes `docs/agents/` from its own defaults; here those answers are already baked in.
@@ -28,13 +22,27 @@ Setup is already done, so don't re-run `/setup-matt-pocock-skills` unless you sp
 
 [mise](https://mise.jdx.dev/getting-started.html) installs everything the project needs. Add your language toolchain to `[tools]` in `mise.toml`, add your build, test and lint commands to `[tasks]`.
 
+## Maintenance tasks
+
+Update the project to the latest template version, from inside the project:
+
+```bash
+mise run template:update
+```
+
+Revert template-managed files that have drifted from the template:
+
+```bash
+mise run template:restore
+```
+
 ## Available templates
 
 ### `bare`
 
 For when skills are installed globally (e.g. in `~/.claude/skills` or `~/.codex/skills`) rather than managed by the project.
 
-This keeps the project much simpler: there is nothing to install and nothing to copy into new worktrees. There is no setup step. `mise.toml` starts empty, so add your toolchain and tasks and go.
+This keeps the project much simpler: there is nothing to initialise and nothing to copy into new worktrees. `mise.toml` ships only cruft and template maintenance tasks, so add your toolchain and tasks and go.
 
 ### `worktrunk`
 
