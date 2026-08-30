@@ -7,7 +7,7 @@ A [mise](https://mise.jdx.dev)-managed, agent-ready starting point for a new pro
 Create a new project from the template using [cruft](https://cruft.github.io/cruft/) (without installing: `pipx run cruft` or `uvx cruft` or `nix run nixpkgs#cruft --`):
 
 ```bash
-cruft create https://github.com/eugencowie/templates
+cruft create https://github.com/eugencowie/templates --directory <template>
 ```
 
 ## Opinionated configuration
