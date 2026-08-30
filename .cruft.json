@@ -1,0 +1,13 @@
+{
+  "template": "https://github.com/eugencowie/templates",
+  "commit": "dac7ca51bb2b061d95a45a0e65c734fe6cef79e0",
+  "checkout": "v1.1.0",
+  "context": {
+    "cookiecutter": {
+      "project_slug": "templates",
+      "_template": "https://github.com/eugencowie/templates",
+      "_commit": "dac7ca51bb2b061d95a45a0e65c734fe6cef79e0"
+    }
+  },
+  "directory": "bare"
+}
