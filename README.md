@@ -10,6 +10,14 @@ Create a new project from the template using [cruft](https://cruft.github.io/cru
 cruft create https://github.com/eugencowie/templates --directory <template>
 ```
 
+Append `-c <tag>` to the command to use a specific release (e.g. `-c v1.2.0`). If you omit it, the included GitHub Actions workflow will open a bootstrap PR on first run to adopt the latest release.
+
+For automated updates, enable "Allow GitHub Actions to create and approve pull requests" or add `RENOVATE_TOKEN` to secrets with a personal access token (preferred). [Create a personal access token](https://github.com/settings/personal-access-tokens/new) with contents, pull requests and workflows write access and set it using:
+
+```bash
+gh secret set RENOVATE_TOKEN
+```
+
 ## Opinionated configuration
 
 `/setup-matt-pocock-skills` normally asks you a series of questions and writes `docs/agents/` from its own defaults; here those answers are already baked in.
@@ -22,12 +30,14 @@ Setup is already done, so don't re-run `/setup-matt-pocock-skills` unless you sp
 
 [mise](https://mise.jdx.dev/getting-started.html) installs everything the project needs. Add your language toolchain to `[tools]` in `mise.toml`, add your build, test and lint commands to `[tasks]`.
 
+[Renovate](https://docs.renovatebot.com) runs on a daily schedule. Enable "Allow GitHub Actions to create and approve pull requests" or add `RENOVATE_TOKEN`. To customise, edit the configuration in `.github/renovate.json5`.
+
 ## Maintenance tasks
 
-Update the project to the latest template version, from inside the project:
+Update the project to a specifc template version, from inside the project:
 
 ```bash
-mise run template:update
+mise run template:update -c <tag>
 ```
 
 Revert template-managed files that have drifted from the template:
