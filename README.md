@@ -12,7 +12,7 @@ cruft create https://github.com/eugencowie/templates --directory <template>
 
 Append `-c <tag>` to the command to use a specific release (e.g. `-c v1.2.0`). If you omit it, the included GitHub Actions workflow will open a bootstrap PR on first run to adopt the latest release.
 
-For automated updates, enable "Allow GitHub Actions to create and approve pull requests" or add `RENOVATE_TOKEN` to secrets with a personal access token (preferred). [Create a personal access token](https://github.com/settings/personal-access-tokens/new) with contents, pull requests and workflows write access and set it using:
+For automated updates, enable "Allow GitHub Actions to create and approve pull requests" or add `RENOVATE_TOKEN` to secrets with a personal access token (preferred). [Create a personal access token](https://github.com/settings/personal-access-tokens/new) with read and write access to contents, pull requests, issues, commit statuses and workflows, and set it using:
 
 ```bash
 gh secret set RENOVATE_TOKEN
