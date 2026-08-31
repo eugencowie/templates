@@ -25,6 +25,8 @@ Strict mode (cruft's default, no flag): a tag older than the project's recorded 
 
 **Global admin config as env vars in the workflow YAML** (not a config.js): `RENOVATE_ALLOWED_COMMANDS` (exact anchored regexes for the two commands), `RENOVATE_ALLOWED_UNSAFE_EXECUTIONS: ["mise"]`, `RENOVATE_REPOSITORIES`, onboarding off; shell executor stays disabled (default).
 
+*Amendment (post-review)*: `RENOVATE_ALLOWED_UNSAFE_EXECUTIONS` was removed. The default image resolves mise to the latest stable release at runtime, which is past the 2026.7.12 `MISE_SAFE=1` threshold, so the allow-list only mattered for mise versions that no run will use; if version detection fails, Renovate skips lock maintenance rather than erroring.
+
 **Lock-file maintenance enabled** in the shipped `renovate.json5` — all mise selectors are `latest`, which only moves via `mise lock --bump`.
 
 **Workflow**: `.github/workflows/renovate.yml`, daily cron + `workflow_dispatch`, `token: ${{ secrets.RENOVATE_TOKEN || github.token }}`, permissions per Renovate's GitHub docs.

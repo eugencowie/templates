@@ -23,5 +23,3 @@ jobs:
           RENOVATE_ONBOARDING: 'false'
           # Exact allow-list for the cruft post-upgrade task; shell executor stays disabled.
           RENOVATE_ALLOWED_COMMANDS: '["^git restore --source=HEAD -- \\.cruft\\.json$", "^mise run template:update -- -y --checkout v\\d+\\.\\d+\\.\\d+$"]'
-          # Lets lock-file maintenance run `mise lock --bump` on older mise versions.
-          RENOVATE_ALLOWED_UNSAFE_EXECUTIONS: '["mise"]'
