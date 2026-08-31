@@ -38,7 +38,7 @@
         fileFilters: ['**/*'],
         installTools: {
           mise: {},
-          uv: {},
+          python: {},
         },
       },
     },
