@@ -1,7 +1,7 @@
 # Cut the first release (v1.0.0)
 
 Type: task
-Status: open
+Status: resolved
 Blocked by: 06
 
 ## Question

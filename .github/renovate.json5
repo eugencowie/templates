@@ -1,25 +1,24 @@
 {
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: ['config:best-practices'],
 
   customManagers: [
     {
-      customType: 'regex',
       description: 'Track the Cruft template release in .cruft.json',
+      customType: 'regex',
       managerFilePatterns: ['/^\\.cruft\\.json$/'],
       matchStrings: ['"checkout"\\s*:\\s*"(?<currentValue>[^"]+)"'],
       datasourceTemplate: 'github-tags',
       depNameTemplate: 'eugencowie/templates',
-      versioningTemplate: 'semver-coerced',
     },
     {
-      customType: 'regex',
       description: 'Bootstrap release tracking when checkout is null',
+      customType: 'regex',
       managerFilePatterns: ['/^\\.cruft\\.json$/'],
       matchStrings: ['"checkout"\\s*:\\s*null'],
       datasourceTemplate: 'github-tags',
       depNameTemplate: 'eugencowie/templates',
       currentValueTemplate: 'v0.0.0',
-      versioningTemplate: 'semver-coerced',
       autoReplaceStringTemplate: '"checkout": "{{{newValue}}}"',
     },
   ],
@@ -30,7 +29,6 @@
       matchManagers: ['custom.regex'],
       matchDepNames: ['eugencowie/templates'],
       groupName: 'template updates',
-      groupSlug: 'template-updates',
       addLabels: ['template-update'],
       postUpgradeTasks: {
         commands: [
@@ -46,10 +44,4 @@
       },
     },
   ],
-
-  // All mise tool selectors are `latest`; only `mise lock --bump` via lock-file
-  // maintenance advances the versions pinned in mise.lock.
-  lockFileMaintenance: {
-    enabled: true,
-  },
 }
