@@ -1,0 +1,27 @@
+name: Renovate
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  statuses: write
+
+jobs:
+  renovate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: renovatebot/github-action@v44.2.1
+        with:
+          token: ${{ secrets.RENOVATE_TOKEN || github.token }}
+        env:
+          RENOVATE_REPOSITORIES: ${{ github.repository }}
+          RENOVATE_ONBOARDING: 'false'
+          # Exact allow-list for the cruft post-upgrade task; shell executor stays disabled.
+          RENOVATE_ALLOWED_COMMANDS: '["^git restore --source=HEAD -- \\.cruft\\.json$", "^mise run template:update -- -y --checkout v\\d+\\.\\d+\\.\\d+$"]'
+          # Lets lock-file maintenance run `mise lock --bump` on older mise versions.
+          RENOVATE_ALLOWED_UNSAFE_EXECUTIONS: '["mise"]'

@@ -7,8 +7,10 @@ A [mise](https://mise.jdx.dev)-managed, agent-ready starting point for a new pro
 Create a new project from the template using [cruft](https://cruft.github.io/cruft/) (without installing: `pipx run cruft` or `uvx cruft` or `nix run nixpkgs#cruft --`):
 
 ```bash
-cruft create https://github.com/eugencowie/templates --directory <template>
+cruft create https://github.com/eugencowie/templates --directory <template> --checkout <latest release>
 ```
+
+`--checkout` pins the project to a tagged release (e.g. `v1.0.0`), which is what the bundled Renovate config tracks for template updates. If you omit it, the first Renovate run opens a bootstrap PR that adopts the latest release — rolling the project back to it if the template state you generated from is newer.
 
 ## Opinionated configuration
 
@@ -35,6 +37,23 @@ Revert template-managed files that have drifted from the template:
 ```bash
 mise run template:restore
 ```
+
+## Automated updates
+
+Both templates ship `renovate.json5` and `.github/workflows/renovate.yml`: a self-hosted [Renovate](https://docs.renovatebot.com) run on a daily schedule (or manually via workflow dispatch). Out of the box it:
+
+- opens a PR when a new template release is tagged, running `mise run template:update` on the branch so the PR contains the applied template changes (conflicts appear as committed `.rej` files for manual resolution);
+- keeps the pinned tool versions in `mise.lock` fresh via lock-file maintenance;
+- updates the GitHub Actions used by the workflow itself.
+
+It authenticates with the workflow's `GITHUB_TOKEN` by default, which needs two things once the repo is pushed:
+
+- Enable **Settings → Actions → General → Allow GitHub Actions to create and approve pull requests**.
+- Expect CI runs on Renovate's PRs to wait for approval — GitHub holds `pull_request` runs triggered by `GITHUB_TOKEN`-created PRs.
+
+Optionally, add a `RENOVATE_TOKEN` secret (a PAT or GitHub App token with contents, pull-requests and workflows write access) and the workflow will prefer it. This removes the CI-approval friction and is required for template updates that change files under `.github/workflows/`, which `GITHUB_TOKEN` cannot push.
+
+Template releases are manual, `v`-prefixed semver tags on this repository (`git tag v1.2.0 && git push origin v1.2.0`); Renovate reads the tags directly, so GitHub Releases are optional.
 
 ## Available templates
 

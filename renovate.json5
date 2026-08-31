@@ -1,0 +1,55 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+
+  customManagers: [
+    {
+      customType: 'regex',
+      description: 'Track the Cruft template release in .cruft.json',
+      managerFilePatterns: ['/^\\.cruft\\.json$/'],
+      matchStrings: ['"checkout"\\s*:\\s*"(?<currentValue>[^"]+)"'],
+      datasourceTemplate: 'github-tags',
+      depNameTemplate: 'eugencowie/templates',
+      versioningTemplate: 'semver-coerced',
+    },
+    {
+      customType: 'regex',
+      description: 'Bootstrap release tracking when checkout is null',
+      managerFilePatterns: ['/^\\.cruft\\.json$/'],
+      matchStrings: ['"checkout"\\s*:\\s*null'],
+      datasourceTemplate: 'github-tags',
+      depNameTemplate: 'eugencowie/templates',
+      currentValueTemplate: 'v0.0.0',
+      versioningTemplate: 'semver-coerced',
+      autoReplaceStringTemplate: '"checkout": "{{{newValue}}}"',
+    },
+  ],
+
+  packageRules: [
+    {
+      description: 'Template updates get their own PR and apply via cruft',
+      matchManagers: ['custom.regex'],
+      matchDepNames: ['eugencowie/templates'],
+      groupName: 'template updates',
+      groupSlug: 'template-updates',
+      addLabels: ['template-update'],
+      postUpgradeTasks: {
+        commands: [
+          'git restore --source=HEAD -- .cruft.json',
+          'mise run template:update -- -y --checkout {{{newValue}}}',
+        ],
+        executionMode: 'branch',
+        fileFilters: ['**/*'],
+        installTools: {
+          mise: {},
+          uv: {},
+        },
+      },
+    },
+  ],
+
+  // All mise tool selectors are `latest`; only `mise lock --bump` via lock-file
+  // maintenance advances the versions pinned in mise.lock.
+  lockFileMaintenance: {
+    enabled: true,
+  },
+}
