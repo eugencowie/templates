@@ -1,7 +1,7 @@
 {
   "project_slug": "my-project",
   "_copy_without_render": [
-    "renovate.json5",
+    ".github/renovate.json5",
     ".github/workflows/renovate.yml"
   ]
 }

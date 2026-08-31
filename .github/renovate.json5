@@ -28,7 +28,7 @@
       description: 'Template updates get their own PR and apply via cruft',
       matchManagers: ['custom.regex'],
       matchDepNames: ['eugencowie/templates'],
-      groupName: 'template',
+      groupName: 'eugencowie/templates',
       postUpgradeTasks: {
         commands: [
           'git restore --source=HEAD -- .cruft.json',
