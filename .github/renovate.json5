@@ -4,7 +4,7 @@
 
   customManagers: [
     {
-      description: 'Track the Cruft template release in .cruft.json',
+      description: 'Track template updates',
       customType: 'regex',
       managerFilePatterns: ['/^\\.cruft\\.json$/'],
       matchStrings: ['"checkout"\\s*:\\s*"(?<currentValue>[^"]+)"'],
@@ -12,7 +12,7 @@
       depNameTemplate: 'eugencowie/templates',
     },
     {
-      description: 'Bootstrap release tracking when checkout is null',
+      description: 'Bootstrap template release tracking',
       customType: 'regex',
       managerFilePatterns: ['/^\\.cruft\\.json$/'],
       matchStrings: ['"checkout"\\s*:\\s*null'],
@@ -28,8 +28,7 @@
       description: 'Template updates get their own PR and apply via cruft',
       matchManagers: ['custom.regex'],
       matchDepNames: ['eugencowie/templates'],
-      groupName: 'template updates',
-      addLabels: ['template-update'],
+      groupName: 'template',
       postUpgradeTasks: {
         commands: [
           'git restore --source=HEAD -- .cruft.json',
