@@ -27,6 +27,8 @@ Strict mode (cruft's default, no flag): a tag older than the project's recorded 
 
 *Amendment (post-review)*: `RENOVATE_ALLOWED_UNSAFE_EXECUTIONS` was removed. The default image resolves mise to the latest stable release at runtime, which is past the 2026.7.12 `MISE_SAFE=1` threshold, so the allow-list only mattered for mise versions that no run will use; if version detection fails, Renovate skips lock maintenance rather than erroring.
 
+*Amendment (post-review)*: `RENOVATE_ALLOWED_COMMANDS` was loosened to a catch-all (`[".+"]`). The exact anchored regexes duplicated the commands from `renovate.json5` into the workflow, coupling repo config to runner config (six lockstep edits per command change across the three copies). The allow-list adds no security in this deployment: the runner processes only its own repository, whose config is already trusted code. Consequence: template updates that change the post-upgrade commands in `renovate.json5` now take effect without a matching workflow edit.
+
 **Lock-file maintenance enabled** in the shipped `renovate.json5` — all mise selectors are `latest`, which only moves via `mise lock --bump`.
 
 **Workflow**: `.github/workflows/renovate.yml`, daily cron + `workflow_dispatch`, `token: ${{ secrets.RENOVATE_TOKEN || github.token }}`, permissions per Renovate's GitHub docs.
