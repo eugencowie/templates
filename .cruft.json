@@ -1,12 +1,16 @@
 {
   "template": "https://github.com/eugencowie/templates",
-  "commit": "dac7ca51bb2b061d95a45a0e65c734fe6cef79e0",
-  "checkout": "v1.1.0",
+  "commit": "1539a2f74f664e131c7d6ca54d3677c076bd724e",
+  "checkout": "v1.2.0",
   "context": {
     "cookiecutter": {
       "project_slug": "templates",
+      "_copy_without_render": [
+        ".github/renovate.json5",
+        ".github/workflows/renovate.yml"
+      ],
       "_template": "https://github.com/eugencowie/templates",
-      "_commit": "dac7ca51bb2b061d95a45a0e65c734fe6cef79e0"
+      "_commit": "1539a2f74f664e131c7d6ca54d3677c076bd724e"
     }
   },
   "directory": "bare"
