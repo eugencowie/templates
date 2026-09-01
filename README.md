@@ -24,7 +24,10 @@ gh secret set RENOVATE_TOKEN
 
 Tickets are tracked as local Markdown files in `docs/planning/`. Domain docs sit in `docs/context.md` and `docs/architecture/`. The templates assume a single domain context.
 
-There is one behavioural change: `/wayfinder` never auto-runs research. Instead, it creates the ticket and leaves it unclaimed, so you can launch it yourself using the agent and model of your choice.
+There are two behavioural changes to the skills:
+
+- `/wayfinder` never auto-runs research. Instead, it creates the ticket and leaves it unclaimed, so you can launch it yourself using the agent and model of your choice.
+- `/improve-codebase-architecture` serves HTML reports over Tailscale if available, otherwise the report is served locally.
 
 Setup is already done, so don't re-run `/setup-matt-pocock-skills` unless you specifically want to reset those modifications. To adjust anything, edit `docs/agents/*.md` directly.
 
