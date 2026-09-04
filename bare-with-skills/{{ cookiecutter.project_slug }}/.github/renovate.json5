@@ -26,6 +26,14 @@
 
   packageRules: [
     {
+      description: 'Track the pinned Renovate version',
+      customType: 'regex',
+      managerFilePatterns: ['/^\\.github\/workflows\/renovate\\.yml$/'],
+      matchStrings: ['renovate-version:\\s*(?<currentValue>\\S+)'],
+      datasourceTemplate: 'docker',
+      depNameTemplate: 'ghcr.io/renovatebot/renovate',
+    },
+    {
       description: 'Template updates get their own PR and apply via cruft',
       matchManagers: ['custom.regex'],
       matchDepNames: ['eugencowie/templates'],
