@@ -22,9 +22,6 @@
       currentValueTemplate: 'v0.0.0',
       autoReplaceStringTemplate: '"checkout": "{{{newValue}}}"',
     },
-  ],
-
-  packageRules: [
     {
       description: 'Track the pinned Renovate version',
       customType: 'regex',
@@ -33,6 +30,9 @@
       datasourceTemplate: 'docker',
       depNameTemplate: 'ghcr.io/renovatebot/renovate',
     },
+  ],
+
+  packageRules: [
     {
       description: 'Template updates get their own PR and apply via cruft',
       matchManagers: ['custom.regex'],
