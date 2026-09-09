@@ -10,8 +10,7 @@ description = "Initialise development environment"
 run = [
   "git config core.hooksPath .githooks",
   "skills experimental_install",
-  "cp -r .agents/. .claude",
-  "echo @AGENTS.md > CLAUDE.md"
+  "cp -r .agents/. .claude"
 ]
 
 [tasks.worktree-init]

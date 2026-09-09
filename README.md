@@ -58,7 +58,7 @@ This keeps the project much simpler: there is nothing to initialise and nothing 
 
 Project-managed skills for Claude Code and Codex, with first-class worktree support.
 
-Initialise the environment with `mise run init`. This installs the required tools ([skills](https://github.com/vercel-labs/skills) via Node.js), installs the configured skills into `.agents/`, copies them into `.claude/`, writes `CLAUDE.md`, and sets up Git hooks for worktree creation.
+Initialise the environment with `mise run init`. This installs the required tools ([skills](https://github.com/vercel-labs/skills) via Node.js), installs the configured skills into `.agents/`, copies them into `.claude/`, and sets up Git hooks for worktree creation.
 
 The `post-checkout` hook bootstraps newly created worktrees automatically using [worktrunk](https://github.com/max-sixty/worktrunk) to copy `init`'s output from the main worktree instead of downloading and installing everything again. Add files to be copied to new worktrees to `.worktreeinclude`.
 
