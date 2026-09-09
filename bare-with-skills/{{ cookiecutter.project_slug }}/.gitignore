@@ -19,7 +19,6 @@ mise/*.local.toml
 #
 
 .agents/
-CLAUDE.md
 GEMINI.md
 WARP.md
 CRUSH.md
