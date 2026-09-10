@@ -5,43 +5,40 @@
 
   customManagers: [
     {
-      description: 'Track template updates',
+      description: 'Update Renovate version',
       customType: 'regex',
-      managerFilePatterns: ['/^\\.cruft\\.json$/'],
+      managerFilePatterns: ['.github/workflows/renovate.yml'],
+      matchStrings: ['renovate-version:\\s*(?<currentValue>[^@\\s]+)(?:@(?<currentDigest>\\S+))?'],
+      datasourceTemplate: 'docker',
+      depNameTemplate: 'ghcr.io/renovatebot/renovate',
+      autoReplaceStringTemplate: 'renovate-version: {{{newValue}}}{{#if newDigest}}@{{{newDigest}}}{{/if}}',
+    },
+    {
+      description: 'Update template version',
+      customType: 'regex',
+      managerFilePatterns: ['.cruft.json'],
       matchStrings: ['"checkout"\\s*:\\s*(?:"(?<currentValue>[^"]+)"|null)'],
       datasourceTemplate: 'github-tags',
       depNameTemplate: 'eugencowie/templates',
       currentValueTemplate: '{{#if currentValue}}{{{currentValue}}}{{else}}v0.0.0{{/if}}',
       autoReplaceStringTemplate: '"checkout": "{{{newValue}}}"',
     },
-    {
-      description: 'Track the pinned Renovate version',
-      customType: 'regex',
-      managerFilePatterns: ['/^\\.github\/workflows\/renovate\\.yml$/'],
-      matchStrings: ['renovate-version:\\s*(?<currentValue>[^@\\s]+)(?:@(?<currentDigest>\\S+))?'],
-      datasourceTemplate: 'docker',
-      depNameTemplate: 'ghcr.io/renovatebot/renovate',
-      autoReplaceStringTemplate: 'renovate-version: {{{newValue}}}{{#if newDigest}}@{{{newDigest}}}{{/if}}',
-    },
   ],
 
   packageRules: [
     {
-      description: 'Template updates get their own PR and apply via cruft',
-      matchManagers: ['custom.regex'],
+      description: 'Apply template update using cruft',
       matchDepNames: ['eugencowie/templates'],
-      groupName: 'eugencowie/templates',
       postUpgradeTasks: {
-        commands: [
-          'git restore --source=HEAD -- .cruft.json',
-          'mise run template:update -- -y --checkout {{{newValue}}}',
-        ],
         executionMode: 'branch',
-        fileFilters: ['**/*'],
         installTools: {
           mise: {},
           python: {},
         },
+        commands: [
+          'git restore -s HEAD .cruft.json',
+          'mise run template:update -- -y -c {{{newValue}}}',
+        ],
       },
     },
   ],
