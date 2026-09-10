@@ -1,3 +1,6 @@
+[settings]
+disable_backends = ["asdf"] # cannot be updated by Renovate
+
 [tools]
 node = "latest"
 "npm:skills" = "latest"
