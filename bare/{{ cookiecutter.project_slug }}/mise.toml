@@ -1,3 +1,6 @@
+[settings]
+disable_backends = ["asdf"] # cannot be updated by Renovate
+
 [tools]
 pipx = "latest"
 "pipx:cruft" = "latest"
