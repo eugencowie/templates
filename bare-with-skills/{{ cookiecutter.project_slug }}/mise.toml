@@ -8,8 +8,22 @@ pipx = "latest"
 "pipx:cruft" = "latest"
 worktrunk = "latest"
 
-[tasks]
-init = { run = ["git config core.hooksPath .githooks", "skills experimental_install", "cp -r .agents/. .claude"], description = "Initialise development environment" }
-worktree-init = { run = "wt step copy-ignored --require-include", hide = true }
-"template:update" = { run = "cruft update", description = "Update project with the latest changes from the template" }
-"template:restore" = { run = "cruft diff | git apply", description = "Restore template-managed files" }
+[tasks.init]
+description = "Initialise development environment"
+run = [
+  "git config core.hooksPath .githooks",
+  "skills experimental_install",
+  "cp -r .agents/. .claude"
+]
+
+[tasks.worktree-init]
+hide = true
+run = "wt step copy-ignored --require-include"
+
+[tasks."template:update"]
+description = "Update project with the latest changes from the template"
+run = "cruft update"
+
+[tasks."template:restore"]
+description = "Restore template-managed files"
+run = "cruft diff | git apply"
