@@ -2,10 +2,11 @@
 disable_backends = ["asdf"] # cannot be updated by Renovate
 
 [tools]
+"aqua:astral-sh/uv" = "latest"
 node = "latest"
 "npm:skills" = "latest"
-pipx = "latest"
 "pipx:cruft" = "latest"
+python = "latest"
 worktrunk = "latest"
 
 [tasks.init]
