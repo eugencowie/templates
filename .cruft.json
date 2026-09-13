@@ -1,7 +1,7 @@
 {
   "template": "https://github.com/eugencowie/templates",
-  "commit": "1d3036dabeed02fb45765e00ab6d8d98c56447ee",
-  "checkout": "v1.5.11",
+  "commit": "cdb4dff96deb09e0ed2c61e1555208823d2c8f53",
+  "checkout": "v1.5.12",
   "context": {
     "cookiecutter": {
       "project_slug": "templates",
@@ -10,7 +10,7 @@
         ".github/workflows/renovate.yml"
       ],
       "_template": "https://github.com/eugencowie/templates",
-      "_commit": "1d3036dabeed02fb45765e00ab6d8d98c56447ee"
+      "_commit": "cdb4dff96deb09e0ed2c61e1555208823d2c8f53"
     }
   },
   "directory": "bare"
