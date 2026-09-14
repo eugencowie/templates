@@ -33,13 +33,12 @@
       matchDepNames: ["eugencowie/templates"],
       postUpgradeTasks: {
         executionMode: "branch",
-        installTools: {
-          mise: {},
-          python: {},
-        },
+        installTools: { mise: {} },
         commands: [
           "git restore -s HEAD .cruft.json",
-          "mise run template:update -- -y -c {{{newValue}}}",
+          "mise install --locked",
+          "mise run --skip-tools template:update -- -y -c {{{newValue}}}",
+          "mise lock",
         ],
       },
     },
