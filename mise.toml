@@ -3,8 +3,13 @@ disable_backends = ["asdf"] # cannot be updated by Renovate
 
 [tools]
 "aqua:astral-sh/uv" = "latest"
+node = "latest"
 "pipx:cruft" = "latest"
+prettier = "latest"
 python = "latest"
+
+[tasks]
+format = "prettier --write ."
 
 [tasks."template:update"]
 description = "Update project with the latest changes from the template"
