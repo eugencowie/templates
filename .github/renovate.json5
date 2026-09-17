@@ -37,7 +37,7 @@
         commands: [
           "git restore -s HEAD .cruft.json",
           "mise install --locked",
-          "mise run --skip-tools template:update -- -y -c {{{newValue}}}",
+          "mise run --skip-tools template:update --skip-apply-ask --checkout {{{newValue}}}",
           "mise lock",
         ],
       },
