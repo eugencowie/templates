@@ -22,6 +22,7 @@ This project uses mise to manage the development environment.
 - Use `mise run <task>` for standard operations.
 - Run `mise ls -l` to see the managed tools.
 - When invoking a managed tool directly, use `mise exec -- <command> [args]` rather than invoking the tool by its bare name.
+- Node.js is managed by pnpm, not mise. To invoke it directly, use `mise exec -- pnpm exec node [args]`.
 
 When starting the dev server, use background mode:
 

@@ -3,7 +3,6 @@ disable_backends = ["asdf"] # cannot be updated by Renovate
 
 [tools]
 "aqua:astral-sh/uv" = "latest"
-node = "latest"
 "pipx:cruft" = "latest"
 pnpm = "latest"
 python = "latest"
