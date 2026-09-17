@@ -21,6 +21,7 @@ format = "pnpm run format"
 "format:fix" = "pnpm run format:fix"
 test = "pnpm run test"
 "test:watch" = "pnpm run test:watch"
+e2e = "pnpm run e2e"
 validate = "pnpm run validate"
 "validate:fix" = "pnpm run validate:fix"
 
