@@ -25,6 +25,26 @@
       currentValueTemplate: "{{#if currentValue}}{{{currentValue}}}{{else}}v0.0.0{{/if}}",
       autoReplaceStringTemplate: '"checkout": "{{{newValue}}}"',
     },
+    {
+      description: "Update Node.js LTS version",
+      customType: "regex",
+      managerFilePatterns: ["package.json"],
+      matchStrings: [
+        '"runtime"\\s*:\\s*\\{\\s*"name"\\s*:\\s*"node"\\s*,\\s*"version"\\s*:\\s*"(?<currentValue>[^"]+)"',
+      ],
+      datasourceTemplate: "node-version",
+      depNameTemplate: "node",
+    },
+    {
+      description: "Update pnpm version",
+      customType: "regex",
+      managerFilePatterns: ["package.json"],
+      matchStrings: [
+        '"packageManager"\\s*:\\s*\\{\\s*"name"\\s*:\\s*"pnpm"\\s*,\\s*"version"\\s*:\\s*"(?<currentValue>[^"]+)"',
+      ],
+      datasourceTemplate: "npm",
+      depNameTemplate: "pnpm",
+    },
   ],
 
   packageRules: [
@@ -37,8 +57,21 @@
         commands: [
           "git restore -s HEAD .cruft.json",
           "mise install --locked",
-          "mise run --skip-tools template:update -- -y -c {{{newValue}}}",
+          "mise run --skip-tools template:update --skip-apply-ask --checkout {{{newValue}}}",
           "mise lock",
+        ],
+      },
+    },
+    {
+      description: "Refresh pnpm lockfile after devEngines update",
+      matchManagers: ["custom.regex"],
+      matchDepNames: ["node", "pnpm"],
+      postUpgradeTasks: {
+        executionMode: "branch",
+        installTools: { mise: {} },
+        commands: [
+          "mise install --locked",
+          "mise run install --lockfile-only",
         ],
       },
     },
