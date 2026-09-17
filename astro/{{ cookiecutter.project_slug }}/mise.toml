@@ -9,6 +9,7 @@ python = "latest"
 
 [tasks]
 install = "pnpm install"
+node = "pnpm exec node"
 astro = "pnpm exec astro"
 dev = "pnpm run dev"
 build = "pnpm run build"

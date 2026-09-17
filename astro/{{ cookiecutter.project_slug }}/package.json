@@ -1,18 +1,6 @@
 {
   "private": true,
   "type": "module",
-  "devEngines": {
-    "runtime": {
-      "name": "node",
-      "version": "^26.8.1",
-      "onFail": "download"
-    },
-    "packageManager": {
-      "name": "pnpm",
-      "version": "^12.3.4",
-      "onFail": "download"
-    }
-  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -42,5 +30,17 @@
     "typescript": "6.0.3",
     "typescript-eslint": "8.70.0",
     "vitest": "5.0.1"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^12.3.4",
+      "onFail": "download"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "^26.8.1",
+      "onFail": "download"
+    }
   }
 }
