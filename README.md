@@ -66,29 +66,13 @@ Skills are restored from `skills-lock.json`, not committed. If you choose to com
 
 ### `astro`
 
-An [Astro](https://astro.build) site with type checking (`astro check`), linting (ESLint with `eslint-plugin-astro`), formatting (Prettier with `prettier-plugin-astro`) and testing (Vitest) configured. Skills are expected to be installed globally, as in `bare`.
+An [Astro](https://astro.build) site with type checking, linting, formatting and testing pre-configured.
 
-Everyday work goes through mise tasks, each a thin wrapper around pnpm:
+Initialise the environment with `mise run install`. Everyday work goes through mise tasks, each a thin wrapper around pnpm: run `mise tasks` for a full list.
 
-| Task                    | What it does                                      |
-| ----------------------- | ------------------------------------------------- |
-| `install`               | Install dependencies                              |
-| `dev`                   | Start the dev server                              |
-| `build`                 | Build the site into `dist/`                       |
-| `preview`               | Serve the built site                              |
-| `check`                 | Type check with `astro check`                     |
-| `lint` / `lint:fix`     | Lint with ESLint, optionally fixing               |
-| `format` / `format:fix` | Check formatting with Prettier, optionally fixing |
-| `test` / `test:watch`   | Run tests with Vitest, optionally in watch mode   |
-| `validate`              | Run `check`, `lint`, `format` and `test` in order |
-| `validate:fix`          | Fix what can be fixed, then `validate`            |
-| `astro` / `node`        | Run the Astro CLI or Node.js directly             |
+Node.js and pnpm are pinned by `devEngines` in `package.json` rather than by mise, with the exact resolved versions and checksums recorded in `pnpm-lock.yaml`. mise still ships pnpm as a bootstrap; it switches itself to the pinned version on first use.
 
-Agents are told to start the dev server in the background with `mise run astro dev --background`, and to stop or inspect it with `mise run astro dev stop`, `status` and `logs`, so it never blocks their session.
-
-Node.js and pnpm are pinned by `devEngines` in `package.json` rather than by mise, with the exact resolved versions and checksums recorded in `pnpm-lock.yaml`. mise still ships pnpm as a bootstrap; it switches itself to the pinned version on first use. Renovate's weekly lockfile maintenance follows minor and patch releases of both, and dedicated update PRs bump the ranges when a new Node.js LTS line or pnpm major is released.
-
-The included `CI` workflow runs on pull requests and on pushes to `main`. It installs the pinned Node.js and pnpm, restores the pnpm store from cache, installs dependencies, then runs `check`, `lint`, `format`, `test` and `build` as separate steps. For Renovate's own pull requests to trigger it, use a `RENOVATE_TOKEN` as described in [Getting started](#getting-started).
+The included `CI` workflow runs on pull requests and on pushes to `main`. It installs the pinned Node.js and pnpm, restores the pnpm store from cache, installs dependencies, then runs type checking, linting, formatting, testing and builds the site.
 
 ## Licence
 
