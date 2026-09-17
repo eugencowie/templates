@@ -26,7 +26,7 @@
       autoReplaceStringTemplate: '"checkout": "{{{newValue}}}"',
     },
     {
-      description: "Update Node.js version range",
+      description: "Update Node.js version range (LTS majors only)",
       customType: "regex",
       managerFilePatterns: ["package.json"],
       matchStrings: [
