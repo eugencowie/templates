@@ -13,7 +13,9 @@
     "lint:fix": "pnpm run lint --fix",
     "format": "prettier . --check",
     "format:fix": "pnpm run format --write",
-    "validate": "pnpm run check && pnpm run lint && pnpm run format",
+    "test": "vitest run",
+    "test:watch": "pnpm run test --watch",
+    "validate": "pnpm run check && pnpm run lint && pnpm run format && pnpm run test",
     "validate:fix": "pnpm run lint:fix && pnpm run format:fix && pnpm run validate"
   },
   "dependencies": {
@@ -29,6 +31,7 @@
     "prettier": "3.9.7",
     "prettier-plugin-astro": "1.0.0",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.70.0"
+    "typescript-eslint": "8.70.0",
+    "vitest": "5.0.1"
   }
 }
