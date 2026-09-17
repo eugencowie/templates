@@ -26,7 +26,7 @@
       autoReplaceStringTemplate: '"checkout": "{{{newValue}}}"',
     },
     {
-      description: "Update Node.js version range (LTS majors only)",
+      description: "Update Node.js LTS version",
       customType: "regex",
       managerFilePatterns: ["package.json"],
       matchStrings: [
@@ -36,7 +36,7 @@
       depNameTemplate: "node",
     },
     {
-      description: "Update pnpm version range",
+      description: "Update pnpm version",
       customType: "regex",
       managerFilePatterns: ["package.json"],
       matchStrings: [
@@ -57,7 +57,7 @@
         commands: [
           "git restore -s HEAD .cruft.json",
           "mise install --locked",
-          "mise run --skip-tools template:update -- -y -c {{{newValue}}}",
+          "mise run --skip-tools template:update --skip-apply-ask --checkout {{{newValue}}}",
           "mise lock",
         ],
       },
@@ -71,7 +71,7 @@
         installTools: { mise: {} },
         commands: [
           "mise install --locked",
-          "mise exec -- pnpm install --lockfile-only",
+          "mise run install --lockfile-only",
         ],
       },
     },
