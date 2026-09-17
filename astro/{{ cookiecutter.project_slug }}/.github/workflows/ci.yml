@@ -11,6 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: pnpm/setup@703c52620218391530e48b9e8870d5c0082e1b9b # v2.1.0
+        env: { pnpm_config_pm_on_fail: ignore } # https://github.com/pnpm/setup/issues/34
         with: { cache: true }
       - run: pnpm run check
       - run: pnpm run lint
