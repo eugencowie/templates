@@ -8,8 +8,13 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check && eslint . && prettier --check .",
-    "fix": "eslint --fix . && prettier --write ."
+    "check": "astro check",
+    "lint": "eslint .",
+    "lint:fix": "pnpm run lint --fix",
+    "format": "prettier . --check",
+    "format:fix": "pnpm run format --write",
+    "validate": "pnpm run check && pnpm run lint && pnpm run format",
+    "validate:fix": "pnpm run lint:fix && pnpm run format:fix && pnpm run validate"
   },
   "dependencies": {
     "astro": "^7.3.2"
