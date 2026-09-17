@@ -8,16 +8,22 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check && prettier --check .",
-    "fix": "prettier --write ."
+    "check": "astro check && eslint . && prettier --check .",
+    "fix": "eslint --fix . && prettier --write ."
   },
   "dependencies": {
     "astro": "^7.3.2"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
+    "@eslint/js": "10.0.1",
+    "@types/node": "22.20.3",
+    "eslint": "10.10.0",
+    "eslint-plugin-astro": "3.1.0",
+    "jiti": "2.7.0",
     "prettier": "3.9.7",
     "prettier-plugin-astro": "1.0.0",
-    "typescript": "6.0.3"
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.70.0"
   }
 }
