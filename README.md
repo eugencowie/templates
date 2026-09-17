@@ -64,6 +64,16 @@ The `post-checkout` hook bootstraps newly created worktrees automatically using 
 
 Skills are restored from `skills-lock.json`, not committed. If you choose to commit them then you must adhere to the terms of the licence they are distributed under. See https://github.com/mattpocock/skills/blob/main/LICENSE for details.
 
+### `astro`
+
+An [Astro](https://astro.build) site with type checking, linting, formatting and testing pre-configured.
+
+Initialise the environment with `mise run install`. Everyday work goes through mise tasks, each a thin wrapper around pnpm: run `mise tasks` for a full list.
+
+Node.js and pnpm are pinned by `devEngines` in `package.json` rather than by mise, with the exact resolved versions and checksums recorded in `pnpm-lock.yaml`. mise still ships pnpm as a bootstrap; it switches itself to the pinned version on first use.
+
+The included `CI` workflow runs on pull requests and on pushes to `main`. It installs the pinned Node.js and pnpm, restores the pnpm store from cache, installs dependencies, then runs type checking, linting, formatting, testing and builds the site.
+
 ## Licence
 
 The contents of this repository are dedicated to the public domain under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt). See https://creativecommons.org/publicdomain/zero/1.0/ for details.

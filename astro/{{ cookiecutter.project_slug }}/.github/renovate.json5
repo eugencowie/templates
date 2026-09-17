@@ -69,10 +69,7 @@
       postUpgradeTasks: {
         executionMode: "branch",
         installTools: { mise: {} },
-        commands: [
-          "mise install --locked",
-          "mise run install --lockfile-only",
-        ],
+        commands: ["mise install --locked", "mise run install --lockfile-only"],
       },
     },
   ],
