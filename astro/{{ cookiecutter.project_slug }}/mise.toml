@@ -15,7 +15,12 @@ dev = "pnpm run dev"
 build = "pnpm run build"
 preview = "pnpm run preview"
 check = "pnpm run check"
-fix = "pnpm run fix"
+lint = "pnpm run lint"
+"lint:fix" = "pnpm run lint:fix"
+format = "pnpm run format"
+"format:fix" = "pnpm run format:fix"
+validate = "pnpm run validate"
+"validate:fix" = "pnpm run validate:fix"
 
 [tasks."template:update"]
 description = "Update project with the latest changes from the template"
