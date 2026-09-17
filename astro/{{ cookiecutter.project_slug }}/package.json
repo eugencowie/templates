@@ -2,19 +2,22 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=22.18.0"
   },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check && prettier --check .",
+    "fix": "prettier --write ."
   },
   "dependencies": {
     "astro": "^7.3.2"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
+    "prettier": "3.9.7",
+    "prettier-plugin-astro": "1.0.0",
     "typescript": "6.0.3"
   }
 }
