@@ -66,13 +66,13 @@ Skills are restored from `skills-lock.json`, not committed. If you choose to com
 
 ### `astro`
 
-An [Astro](https://astro.build) site with type checking, linting, formatting and testing pre-configured.
+An [Astro](https://astro.build) site with type checking, linting, formatting, unit testing and end-to-end testing pre-configured.
 
 Initialise the environment with `mise run install`. Everyday work goes through mise tasks, each a thin wrapper around pnpm: run `mise tasks` for a full list.
 
 Node.js and pnpm are pinned by `devEngines` in `package.json` rather than by mise, with the exact resolved versions and checksums recorded in `pnpm-lock.yaml`. mise still ships pnpm as a bootstrap; it switches itself to the pinned version on first use.
 
-The included `CI` workflow runs on pull requests and on pushes to `main`. It installs the pinned Node.js and pnpm, restores the pnpm store from cache, installs dependencies, then runs type checking, linting, formatting, testing and builds the site.
+The included `CI` workflow runs on pull requests and on pushes to `main`. It installs the pinned Node.js and pnpm, restores the pnpm store from cache, installs dependencies, then runs type checking, linting, formatting, unit tests and end-to-end tests.
 
 ## Licence
 

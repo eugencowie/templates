@@ -1,4 +1,8 @@
 import { getViteConfig } from "astro/config";
-import { defineConfig } from "vitest/config";
+import { configDefaults } from "vitest/config";
 
-export default getViteConfig(defineConfig({}));
+export default getViteConfig({
+  test: {
+    exclude: [...configDefaults.exclude, "tests/e2e/**"],
+  },
+});

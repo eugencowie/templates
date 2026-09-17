@@ -12,7 +12,8 @@
     "format:fix": "pnpm run format --write",
     "test": "vitest run",
     "test:watch": "pnpm run test --watch",
-    "validate": "pnpm run check && pnpm run lint && pnpm run format && pnpm run test",
+    "e2e": "playwright test",
+    "validate": "pnpm run check && pnpm run lint && pnpm run format && pnpm run test && pnpm run e2e",
     "validate:fix": "pnpm run lint:fix && pnpm run format:fix && pnpm run validate"
   },
   "dependencies": {
@@ -21,6 +22,8 @@
   "devDependencies": {
     "@astrojs/check": "0.9.10",
     "@eslint/js": "10.0.1",
+    "@playwright/browser-chromium": "1.63.0",
+    "@playwright/test": "1.63.0",
     "@types/node": "26.6.1",
     "eslint": "10.10.0",
     "eslint-plugin-astro": "3.1.0",
