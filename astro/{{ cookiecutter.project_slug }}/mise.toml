@@ -14,6 +14,7 @@ astro = "pnpm exec astro"
 dev = "pnpm run dev"
 build = "pnpm run build"
 preview = "pnpm run preview"
+check = "pnpm run check"
 
 [tasks."template:update"]
 description = "Update project with the latest changes from the template"
