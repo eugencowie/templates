@@ -9,4 +9,10 @@ export default defineConfig([
   js.configs.recommended,
   ts.configs.recommended,
   astro.configs.recommended,
+  {
+    rules: {
+      // Use the @/ alias for imports across folders
+      "no-restricted-imports": ["error", { patterns: [{ group: ["../*"] }] }],
+    },
+  },
 ]);
