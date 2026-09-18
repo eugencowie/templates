@@ -1,5 +1,6 @@
 ---
 import type { MarkdownLayoutProps } from "astro";
+import assert from "node:assert/strict";
 import BaseLayout from "./BaseLayout.astro";
 
 type Props = MarkdownLayoutProps<{
@@ -7,6 +8,7 @@ type Props = MarkdownLayoutProps<{
 }>;
 
 const { frontmatter } = Astro.props;
+assert(frontmatter.title, "Markdown page has no title in its frontmatter");
 ---
 
 <BaseLayout title={frontmatter.title}>
