@@ -4,6 +4,8 @@ import Layout from "./Layout.astro";
 
 test("layout renders the title", async () => {
   const container = await AstroContainer.create();
-  const result = await container.renderToString(Layout);
+  const result = await container.renderToString(Layout, {
+    props: { title: "Astro" },
+  });
   expect(result).toContain("<title>Astro</title>");
 });
