@@ -105,6 +105,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  prettier-plugin-tailwindcss@0.8.1: 71ad7b7f5fa30d037639b62c8968d286b3c8f655c8c38a313985ad23b0787085
+
 importers:
 
   .:
@@ -154,7 +157,7 @@ importers:
         version: 1.0.0(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(prettier@3.9.7)
       prettier-plugin-tailwindcss:
         specifier: 0.8.1
-        version: 0.8.1(prettier-plugin-astro@1.0.0(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(prettier@3.9.7))(prettier@3.9.7)
+        version: 0.8.1(patch_hash=71ad7b7f5fa30d037639b62c8968d286b3c8f655c8c38a313985ad23b0787085)(prettier-plugin-astro@1.0.0(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(prettier@3.9.7))(prettier@3.9.7)
       typescript:
         specifier: 6.0.3
         version: 6.0.3
@@ -4576,7 +4579,7 @@ snapshots:
       - '@emnapi/core'
       - '@emnapi/runtime'
 
-  prettier-plugin-tailwindcss@0.8.1(prettier-plugin-astro@1.0.0(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(prettier@3.9.7))(prettier@3.9.7):
+  prettier-plugin-tailwindcss@0.8.1(patch_hash=71ad7b7f5fa30d037639b62c8968d286b3c8f655c8c38a313985ad23b0787085)(prettier-plugin-astro@1.0.0(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(prettier@3.9.7))(prettier@3.9.7):
     dependencies:
       prettier: 3.9.7
     optionalDependencies:
