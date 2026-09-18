@@ -1,7 +1,8 @@
-import { test, expect } from "@playwright/test";
+import { describe, expect, it } from "./playwright";
 
-test("index page has the correct title", async ({ page }) => {
-  await page.goto("/");
-
-  await expect(page).toHaveTitle("Astro");
+describe("Index", () => {
+  it("has the correct title", async ({ page }) => {
+    await page.goto("/");
+    await expect(page).toHaveTitle("Astro");
+  });
 });

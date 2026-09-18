@@ -1,0 +1,18 @@
+---
+import type { MarkdownLayoutProps } from "astro";
+import { z } from "astro/zod";
+import BaseLayout from "./BaseLayout.astro";
+
+// Validate during render since markdown files don't have type checking
+const Frontmatter = z.object({
+  title: z.string(),
+});
+type Props = MarkdownLayoutProps<z.infer<typeof Frontmatter>>;
+Frontmatter.parse(Astro.props.frontmatter);
+
+const { title } = Astro.props.frontmatter;
+---
+
+<BaseLayout title={title}>
+  <slot />
+</BaseLayout>
