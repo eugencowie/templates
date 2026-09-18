@@ -11,8 +11,10 @@ export default defineConfig([
   astro.configs.recommended,
   {
     rules: {
-      // Use the @/ alias for imports across folders
-      "no-restricted-imports": ["error", { patterns: [{ group: ["../*"] }] }],
+      "no-restricted-imports": [
+        "error",
+        { patterns: [{ group: ["../*"], message: "Use @/ across folders" }] },
+      ],
     },
   },
 ]);
