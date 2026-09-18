@@ -1,7 +1,4 @@
-import { test, expect } from "@playwright/test";
-
-const describe = test.describe;
-const it = test;
+import { describe, expect, it } from "./playwright";
 
 describe("index page", () => {
   it("has the correct title", async ({ page }) => {
