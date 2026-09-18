@@ -1,0 +1,46 @@
+From 7cc7dd68e15d20022d5ebb2d48a432e4ea961bda Mon Sep 17 00:00:00 2001
+From: leaysgur <6259812+leaysgur@users.noreply.github.com>
+Date: Wed, 9 Sep 2026 13:16:04 +0900
+Subject: [PATCH] fix: support prettier-plugin-astro v1 (#473)
+
+`prettier-plugin-astro` v1 has been released, but it emits an ESTree/JSX AST
+from `@astrojs/compiler-rs` instead of its own element/attribute nodes (v0.x),
+so the Astro transform silently matched nothing.
+
+Delegate to the JavaScript transform for the new root type and let dynamic
+attrs like `class:list` through the JSX attribute handler.
+
+NOTE: Not breaking, v0.x is still supported alongside v1. `devDependencies`
+follow the Svelte precedent (#462): track the latest major only.
+---
+diff --git a/dist/index.mjs b/dist/index.mjs
+index 6d6c68a0f9ca97da614e8a2da87e87dedb2597f8..bbc71b23d693eae03b98fad7463c2a0519a1f924 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs	
+@@ -802,9 +802,12 @@ function transformJavaScript(ast, env) {
+ 			node = node;
+ 			if (!node.value) return;
+ 			if (typeof node.name.name !== "string") return;
+-			if (!matcher.hasStaticAttr(node.name.name)) return;
+-			if (isStringLiteral(node.value)) sortStringLiteral(node.value, { env });
+-			else if (node.value.type === "JSXExpressionContainer") sortInside(node.value);
++			let name = node.name.name;
++			if (isStringLiteral(node.value)) {
++				if (matcher.hasStaticAttr(name)) sortStringLiteral(node.value, { env });
++			} else if (node.value.type === "JSXExpressionContainer") {
++				if (matcher.hasStaticAttr(name) || matcher.hasDynamicAttr(name)) sortInside(node.value);
++			}
+ 		},
+ 		CallExpression(node) {
+ 			node = node;
+@@ -868,6 +871,10 @@ function transformCss(ast, env) {
+ 	});
+ }
+ function transformAstro(ast, env) {
++	if (ast.type === "AstroRoot") {
++		transformJavaScript(ast.template, env);
++		return;
++	}
+ 	let { matcher } = env;
+ 	if (ast.type === "element" || ast.type === "custom-element" || ast.type === "component") {
+ 		for (let attr of ast.attributes ?? []) if (matcher.hasStaticAttr(attr.name) && attr.type === "attribute" && attr.kind === "quoted") attr.value = sortClasses(attr.value, { env });
