@@ -17,15 +17,14 @@
     "validate:fix": "pnpm run lint:fix && pnpm run format:fix && pnpm run validate"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.3.2",
-    "tailwindcss": "^4.3.3"
+    "astro": "^7.3.2"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
     "@eslint/js": "10.0.1",
     "@playwright/browser-chromium": "1.63.0",
     "@playwright/test": "1.63.0",
+    "@tailwindcss/vite": "4.3.3",
     "@types/node": "26.6.1",
     "eslint": "10.10.0",
     "eslint-plugin-astro": "3.1.0",
@@ -33,6 +32,7 @@
     "prettier": "3.9.7",
     "prettier-plugin-astro": "1.0.0",
     "prettier-plugin-tailwindcss": "0.8.1",
+    "tailwindcss": "4.3.3",
     "typescript": "6.0.3",
     "typescript-eslint": "8.70.0",
     "vitest": "5.0.1"
