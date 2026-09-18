@@ -13,7 +13,7 @@ node = "pnpm exec node"
 astro = "pnpm exec astro"
 dev = "pnpm run dev"
 build = "pnpm run build"
-preview = "pnpm run preview"
+preview = ["pnpm run build", "pnpm run preview"]
 check = "pnpm run check"
 lint = "pnpm run lint"
 "lint:fix" = "pnpm run lint:fix"
@@ -21,7 +21,7 @@ format = "pnpm run format"
 "format:fix" = "pnpm run format:fix"
 test = "pnpm run test"
 "test:watch" = "pnpm run test:watch"
-e2e = "pnpm run e2e"
+e2e = ["pnpm run build", "pnpm run e2e"]
 validate = "pnpm run validate"
 "validate:fix" = "pnpm run validate:fix"
 

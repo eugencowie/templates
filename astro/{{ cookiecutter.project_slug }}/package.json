@@ -13,7 +13,7 @@
     "test": "vitest run",
     "test:watch": "pnpm run test --watch",
     "e2e": "playwright test",
-    "validate": "pnpm run check && pnpm run lint && pnpm run format && pnpm run test && pnpm run e2e",
+    "validate": "pnpm run build && pnpm run check && pnpm run lint && pnpm run format && pnpm run test && pnpm run e2e",
     "validate:fix": "pnpm run lint:fix && pnpm run format:fix && pnpm run validate"
   },
   "dependencies": {
