@@ -66,7 +66,7 @@ Skills are restored from `skills-lock.json`, not committed. If you choose to com
 
 ### `astro`
 
-An [Astro](https://astro.build) site with type checking, linting, formatting, unit testing and end-to-end testing pre-configured.
+An [Astro](https://astro.build) site with [Tailwind CSS](https://tailwindcss.com), type checking, linting, formatting, unit testing and end-to-end testing pre-configured.
 
 Initialise the environment with `mise run install`. Everyday work goes through mise tasks, each a thin wrapper around pnpm: run `mise tasks` for a full list.
 

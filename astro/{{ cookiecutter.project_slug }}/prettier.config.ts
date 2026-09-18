@@ -3,5 +3,5 @@ import type { Config } from "prettier";
 const defineConfig = (config: Config): Config => config;
 
 export default defineConfig({
-  plugins: ["prettier-plugin-astro"],
+  plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
 });
