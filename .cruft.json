@@ -1,7 +1,7 @@
 {
   "template": "https://github.com/eugencowie/templates",
-  "commit": "2f09f89475cf1eaf0f421de804a09c5f54e5f151",
-  "checkout": "v1.6.8",
+  "commit": "8f765854353552e7af495c29db804fe9f03acc5f",
+  "checkout": "v1.6.9",
   "context": {
     "cookiecutter": {
       "_copy_without_render": [
@@ -10,7 +10,7 @@
       ],
       "project_slug": "templates",
       "_template": "https://github.com/eugencowie/templates",
-      "_commit": "2f09f89475cf1eaf0f421de804a09c5f54e5f151"
+      "_commit": "8f765854353552e7af495c29db804fe9f03acc5f"
     }
   },
   "directory": "bare"
