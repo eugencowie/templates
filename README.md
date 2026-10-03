@@ -72,7 +72,7 @@ Initialise the environment with `mise run install`. Everyday work goes through m
 
 Node.js and pnpm are pinned by `devEngines` in `package.json` rather than by mise, with the exact resolved versions and checksums recorded in `pnpm-lock.yaml`. mise still ships pnpm as a bootstrap; it switches itself to the pinned version on first use.
 
-The included `Validate` workflow runs on pull requests and on pushes to `main`. It installs the pinned Node.js and pnpm, restores the pnpm store from cache, installs dependencies, then runs type checking, linting, formatting, unit tests and end-to-end tests.
+The included `Validate` workflow runs on pull requests. It installs the pinned Node.js and pnpm, restores the pnpm store from cache, installs dependencies, then runs `pnpm run validate`: the same build, type check, lint, format, unit test and end-to-end test steps as `mise run validate` locally.
 
 ## Licence
 
