@@ -22,7 +22,7 @@ gh secret set RENOVATE_TOKEN
 
 `/setup-matt-pocock-skills` normally asks you a series of questions and writes `docs/agents/` from its own defaults; here those answers are already baked in.
 
-Tickets are tracked as local Markdown files in `docs/planning/`. Domain docs sit in `docs/context.md` and `docs/architecture/`. The templates assume a single domain context.
+Tickets are tracked as local Markdown files in `docs/planning/`. Domain docs sit in `docs/glossary.md` and `docs/architecture/`. The templates assume a single domain context.
 
 There is one behavioural change: `/wayfinder` never auto-runs research. Instead, it creates the ticket and leaves it unclaimed, so you can launch it yourself using the agent and model of your choice.
 
@@ -62,7 +62,7 @@ Initialise the environment with `mise run init`. This installs the required tool
 
 The `post-checkout` hook bootstraps newly created worktrees automatically using [worktrunk](https://github.com/max-sixty/worktrunk) to copy `init`'s output from the main worktree instead of downloading and installing everything again. Add files to be copied to new worktrees to `.worktreeinclude`.
 
-Skills are restored from `skills-lock.json`, not committed. If you choose to commit them then you must adhere to the terms of the licence they are distributed under. See https://github.com/mattpocock/skills/blob/main/LICENSE for details.
+Skills are restored from `skills-lock.json`, not committed. The lock mirrors the skills listed in upstream's [`.claude-plugin/plugin.json`](https://github.com/mattpocock/skills/blob/main/.claude-plugin/plugin.json). If you choose to commit them then you must adhere to the terms of the licence they are distributed under. See https://github.com/mattpocock/skills/blob/main/LICENSE for details.
 
 ### `astro`
 
