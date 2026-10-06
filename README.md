@@ -62,7 +62,7 @@ Initialise the environment with `mise run init`. This installs the required tool
 
 The `post-checkout` hook bootstraps newly created worktrees automatically using [worktrunk](https://github.com/max-sixty/worktrunk) to copy `init`'s output from the main worktree instead of downloading and installing everything again. Add files to be copied to new worktrees to `.worktreeinclude`.
 
-Skills are restored from `skills-lock.json`, not committed. If you choose to commit them then you must adhere to the terms of the licence they are distributed under. See https://github.com/mattpocock/skills/blob/main/LICENSE for details.
+Skills are restored from `skills-lock.json`, not committed. The lock mirrors the skills listed in upstream's [`.claude-plugin/plugin.json`](https://github.com/mattpocock/skills/blob/main/.claude-plugin/plugin.json). If you choose to commit them then you must adhere to the terms of the licence they are distributed under. See https://github.com/mattpocock/skills/blob/main/LICENSE for details.
 
 ### `astro`
 
