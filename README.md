@@ -22,7 +22,7 @@ gh secret set RENOVATE_TOKEN
 
 `/setup-matt-pocock-skills` normally asks you a series of questions and writes `docs/agents/` from its own defaults; here those answers are already baked in.
 
-Tickets are tracked as local Markdown files in `docs/planning/`. Domain docs sit in `docs/context.md` and `docs/architecture/`. The templates assume a single domain context.
+Tickets are tracked as local Markdown files in `docs/planning/`. Domain docs sit in `docs/glossary.md` and `docs/architecture/`. The templates assume a single domain context.
 
 There is one behavioural change: `/wayfinder` never auto-runs research. Instead, it creates the ticket and leaves it unclaimed, so you can launch it yourself using the agent and model of your choice.
 
